@@ -42,7 +42,22 @@ const cart = {
         }
         return total;
   },
-  increaseQuantity(productName) {},
+    increaseQuantity(productName) {
+        //console.log(productName);
+        
+            
+        for (const item of this.items) {
+           // console.log(item.name);
+            item.quantity = 1
+            if (item.name === productName) {
+           
+                console.log(item.quantity);
+            
+            }
+           
+        }
+         
+  },
   decreaseQuantity(productName) {},
 };
 
@@ -57,18 +72,24 @@ cart.add({ name: '🍋', price: 60 });
 // console.table(cart.getItems());
 
 
-cart.remove('🍎');
+//cart.remove('🍎');
 //cart.getItems();
 // console.table(cart.getItems());
 
 // cart.clear();
 // cart.getItems();
 
-// cart.increaseQuantity('🍎');
+cart.increaseQuantity('🍎');
+//cart.increaseQuantity('🍎');
+//cart.getItems();
+//cart.increaseQuantity('🍋');
+//cart.getItems();
+//cart.increaseQuantity('🍎');
+//cart.getItems();
 // console.table(cart.getItems());
 
 // cart.decreaseQuantity('🍋');
 // cart.decreaseQuantity('🍋');
 // console.table(cart.getItems());
 
- console.log('Total: ', cart.countTotalPrice());
+ //console.log('Total: ', cart.countTotalPrice());
