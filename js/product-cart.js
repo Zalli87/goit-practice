@@ -21,6 +21,10 @@ const cart = {
   },
     add(product) {
       this.items.push(product)
+      for (const item of this.items) {
+            item.quantity = 1;
+         }
+      
   },
     remove(productName) {     
         for (const item of this.items) {
@@ -38,38 +42,35 @@ const cart = {
         let total = 0;
       for (const item of this.items) {
           //console.log(item.price);
-          total += item.price;
+          total += item.price *item.quantity;
         }
         return total;
   },
     increaseQuantity(productName) {
-        //console.log(productName);
-        
-            
-        for (const item of this.items) {
-           // console.log(item.name);
-            item.quantity = 1
+         for (const item of this.items) {
             if (item.name === productName) {
-           
-                console.log(item.quantity);
-            
+              item.quantity += 1;
             }
-           
-        }
+          }
          
   },
-  decreaseQuantity(productName) {},
+  decreaseQuantity(productName) {
+    for (const item of this.items) {
+            if (item.name === productName) {
+              item.quantity -= 1;
+            }
+          }
+  },
 };
 
 // console.table(cart.getItems());
 
 cart.add({ name: '🍎', price: 50 });
 cart.add({ name: '🍋', price: 60 });
-cart.add({ name: '🍋', price: 60 });
 cart.add({ name: '🍓', price: 110 });
-cart.add({ name: '🍋', price: 60 });
+cart.add({ name: '🍇', price: 70 })
 
-// console.table(cart.getItems());
+ cart.getItems();
 
 
 //cart.remove('🍎');
@@ -80,16 +81,14 @@ cart.add({ name: '🍋', price: 60 });
 // cart.getItems();
 
 cart.increaseQuantity('🍎');
-//cart.increaseQuantity('🍎');
-//cart.getItems();
-//cart.increaseQuantity('🍋');
-//cart.getItems();
-//cart.increaseQuantity('🍎');
-//cart.getItems();
-// console.table(cart.getItems());
-
-// cart.decreaseQuantity('🍋');
+cart.increaseQuantity('🍎');
+cart.getItems();
+cart.increaseQuantity('🍋');
+cart.getItems();
+cart.increaseQuantity('🍎');
+cart.decreaseQuantity('🍋');
+cart.getItems();
 // cart.decreaseQuantity('🍋');
 // console.table(cart.getItems());
 
- //console.log('Total: ', cart.countTotalPrice());
+console.log('Total: ', cart.countTotalPrice());
